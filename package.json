@@ -1,0 +1,79 @@
+{
+  "name": "riot-starter",
+  "version": "1.0.0",
+  "description": "A starter kit for Riot JS",
+  "main": "webpack.config.js",
+  "scripts": {
+    "html": "cpy ./src/index.html ./build/",
+    "svg": "cpy ./src/*.svg ./build/",
+    "bundle": "webpack -p -d --progress --colors",
+    "build": "npm-run-all html bundle",
+    "serve": "webpack-dev-server --hot",
+    "dev": "npm-run-all svg html serve"
+  },
+  "author": {
+    "name": "Stijn de Witt",
+    "email": "stijndewitt@hotmail.com",
+    "url": "https://stijndewitt.com"
+  },
+  "contributors": [
+    {
+      "name": "webkid",
+      "url": "http://webkid.io/"
+    },
+    {
+      "name": "artparks",
+      "url": "https://github.com/artparks"
+    },
+    {
+      "name": "Tianxiang Chen",
+      "url": "https://github.com/txchen"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "dependencies": {
+    "async-class": "^0.4.1",
+    "npm-run-all": "^2.3.0",
+    "riot": "^2.5.0",
+    "riotcontrol": "0.0.3",
+    "ts-loader": "^0.8.2",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/download/riot-starter.git"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015-riot": "^1.1.0",
+    "bootstrap-loader": "^2.0.0-beta.11",
+    "bootstrap-sass": "^3.3.7",
+    "cpy": "^4.0.1",
+    "cpy-cli": "^1.0.1",
+    "css-loader": "^0.23.1",
+    "csswring": "^5.1.0",
+    "file-loader": "^0.9.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jquery": "^3.1.0",
+    "node-sass": "^3.10.0",
+    "nprogress": "^0.2.0",
+    "postcss-custom-properties": "^5.0.0",
+    "postcss-import": "^8.1.2",
+    "postcss-loader": "^0.9.1",
+    "postcss-nested": "^1.0.0",
+    "resolve-url-loader": "^1.6.0",
+    "riotjs-loader": "^3.0.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.9.10",
+    "webpack-dev-server": "^1.9.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015-riot"
+    ]
+  }
+}
