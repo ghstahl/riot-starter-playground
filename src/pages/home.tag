@@ -1,11 +1,7 @@
-import '../components/header.tag';
 import '../components/itemlist.tag';
-import '../components/sidebar-layout.tag';
 import 'whatwg-fetch';
 
 <home>
-  <sidebar-layout>
-    <yield to="content">
       <itemlist title="Item List ABC"></itemlist>
       <form onsubmit={ search }>
         <label>
@@ -19,7 +15,6 @@ import 'whatwg-fetch';
                     placeholder='28 Days Later..'
                     type='search' />
           </label>
-        <button  class="btn btn-default" onclick={parent.search}>Submit</button>
         </form>
 
           <div if={ isLoading } class='loader'>
@@ -37,9 +32,7 @@ import 'whatwg-fetch';
             </ul>
           </div>
 
-    </yield>
-  </sidebar-layout>
-  <header></header>
+
 
   <script >
     this.lastSearch = null;
@@ -81,13 +74,13 @@ import 'whatwg-fetch';
 
       if (!search) {
         this.resetData()
-      } else if (this.lastSearch != search)  {
-        this.parent.resetData()
-        this.parent.isLoading = true
-        this.parent.doApiRequest(search)
+      } else if (this.lastSearch != search && search.length > 1)  {
+        this.resetData()
+        this.isLoading = true
+        this.doApiRequest(search)
       }
 
-      this.parent.lastSearch = search
+      this.lastSearch = search
     }
   </script>
 

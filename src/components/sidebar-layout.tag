@@ -9,27 +9,10 @@ import './sidebar-layout.css';
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                <li each={ parent.menuItems } >
+                    <a href="{this.href}"
+                       class={ active : parent.currentView === this.view}
+                    >{ this.name }</a>
                 </li>
             </ul>
         </div>
@@ -47,10 +30,7 @@ import './sidebar-layout.css';
 
                     <div class="col-lg-12">
                         <yield from="content"/>
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle" onclick={toggle}>Toggle Menu</a>
+
                     </div>
                 </div>
             </div>
@@ -58,11 +38,16 @@ import './sidebar-layout.css';
         <!-- /#page-content-wrapper -->
 
     </div>
+    this.title = opts.title
+    this.menuItems = opts.menuItems;
     <!-- /#wrapper -->
     this.toggle = (e) => {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     }
+    this.route = (evt) => {
+        riot.route(evt.item.view)
+    };
 
 </sidebar-layout>
 
